@@ -22,7 +22,6 @@ public class ParametrsRead {
       while ((parametr = reader.readLine()) != null) {
         parametrs.add(parametr);
       }
-
     } catch (IOException e) {
       log.error("Exception in " + ParametrsRead.class + " " + e.getMessage());
     }

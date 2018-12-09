@@ -12,12 +12,11 @@ public class TetrahedFactory extends ShapeFactory {
   }
 
   @Override
-  public Shape getShape() {
-    Shape shape;
+  public Shape getShape(){
     double[] parametrs;
-    do{
+    do {
       parametrs = parametrsHandler.getParametrs();
-    }while(parametrs == null);
+    } while(parametrs == null);
     return new Tetrahed(parametrs[0],new Point(parametrs[1]),new Point(parametrs[2]));
   }
 }
