@@ -2,17 +2,14 @@ package by.chebotar.Entity;
 
 import by.chebotar.Input.ParametrsHandler;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class TetrahedFactory extends ShapeFactory {
 
-  private ParametrsHandler parametrsHandler;
-
-  public TetrahedFactory() throws FileNotFoundException {
-    parametrsHandler = new ParametrsHandler();
-  }
+  private ParametrsHandler parametrsHandler = new ParametrsHandler();;
 
   @Override
-  public Shape getShape(){
+  public Shape getShape() throws IOException {
     double[] parametrs;
     do {
       parametrs = parametrsHandler.getParametrs();

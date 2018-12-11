@@ -2,23 +2,23 @@ package by.chebotar.Input;
 
 import by.chebotar.Validator.ParametrValidator;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 public class ParametrsHandler {
-  private ParametrsRead parametrsRead;
+  private Path path;
+  private ParametrsRead parametrsRead = new ParametrsRead();
   private List<String> listOfStrings;
   private String[] parametrs;
-  private ParametrValidator parametrValidator;
-  private static int index;
+  private ParametrValidator parametrValidator = new ParametrValidator();
+  private static int index = 0;
 
-  public ParametrsHandler() throws FileNotFoundException {
-    index = 0;
-    parametrsRead = new ParametrsRead();
-    listOfStrings = parametrsRead.getParametrs();
-    parametrValidator = new ParametrValidator();
+  public void setPath(Path path) {
+    this.path = path;
   }
 
-  public double[] getParametrs(){
+  public double[] getParametrs() throws IOException {
     getSplitedValidStrings();
     if(parametrs == null){
       return null;
@@ -32,9 +32,10 @@ public class ParametrsHandler {
     return doubleParametrs;
   }
 
-  private void getSplitedValidStrings(){
+  private void getSplitedValidStrings() throws IOException {
     String[] temp;
     boolean flag = true;
+    listOfStrings = parametrsRead.getParametrs(path);
     if (index >= listOfStrings.size()){
       index = 0;
     }
