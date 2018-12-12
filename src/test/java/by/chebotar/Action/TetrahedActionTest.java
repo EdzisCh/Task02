@@ -5,15 +5,15 @@ import org.testng.annotations.Test;
 
 public class TetrahedActionTest{
 
-  private final TetrahedAction tetrahedAction = new TetrahedAction();
+  private TetrahedAction tetrahedAction = new TetrahedAction();
 
-  @Test(expectedExceptions = IllegalArgumentException.class)
+  @Test
   public void squareValueShouldBeNonNegative() throws IllegalArgumentException{
-    Assert.assertEquals(tetrahedAction.square(-1), false);
+    Assert.assertEquals(tetrahedAction.square(-1), 0.0);
   }
 
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void volumeValueShouldBeNonNegative() throws IllegalArgumentException{
-    Assert.assertEquals(tetrahedAction.volume(-1), false);
+  @Test
+  public void volumeValueShouldBeNonNegative(){
+    Assert.assertEquals(tetrahedAction.volume(-1), 0.0);
   }
 }

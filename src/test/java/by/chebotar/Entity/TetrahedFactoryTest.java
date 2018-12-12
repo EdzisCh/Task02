@@ -1,16 +1,20 @@
 package by.chebotar.Entity;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TetrahedFactoryTest {
 
-  private final TetrahedFactory tetrahedFactory = new TetrahedFactory();
+  private TetrahedFactory tetrahedFactory = new TetrahedFactory();
 
   @Test
   public void returnObjectShouldBeTetrahed() throws IOException {
-    Assert.assertEquals(tetrahedFactory.getShape(),Tetrahed.class);
+    String validPath = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "parametrs.txt";
+    Tetrahed tetrahed = tetrahedFactory.getTetrahed(Paths.get(validPath));
+    Assert.assertEquals(tetrahed.getClass(), Tetrahed.class);
   }
 
 }

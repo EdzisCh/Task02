@@ -1,6 +1,6 @@
 package by.chebotar.Entity;
 
-public class Tetrahed implements Shape {
+public class Tetrahed extends Shape {
   private Point x;
   private Point y;
   private double a;

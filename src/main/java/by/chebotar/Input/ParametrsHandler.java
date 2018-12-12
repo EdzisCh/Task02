@@ -7,19 +7,14 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class ParametrsHandler {
-  private Path path;
   private ParametrsRead parametrsRead = new ParametrsRead();
   private List<String> listOfStrings;
   private String[] parametrs;
   private ParametrValidator parametrValidator = new ParametrValidator();
   private static int index = 0;
 
-  public void setPath(Path path) {
-    this.path = path;
-  }
-
-  public double[] getParametrs() throws IOException {
-    getSplitedValidStrings();
+  public double[] getParametrs(Path path) throws IOException {
+    getSplitedValidStrings(path);
     if(parametrs == null){
       return null;
     }
@@ -32,7 +27,7 @@ public class ParametrsHandler {
     return doubleParametrs;
   }
 
-  private void getSplitedValidStrings() throws IOException {
+  private void getSplitedValidStrings(Path path) throws IOException {
     String[] temp;
     boolean flag = true;
     listOfStrings = parametrsRead.getParametrs(path);

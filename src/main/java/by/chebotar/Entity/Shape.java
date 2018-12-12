@@ -1,5 +1,5 @@
 package by.chebotar.Entity;
 
-public interface Shape {
-  String toString();
+public abstract class Shape {
+
 }
