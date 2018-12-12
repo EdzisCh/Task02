@@ -1,6 +1,7 @@
 package by.chebotar.Input;
 
 import by.chebotar.Entity.TetrahedFactory;
+import by.chebotar.Exceptions.InvalidPathException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,17 +19,15 @@ public class ParametrsRead {
 
   private static final Logger LOGGER = LogManager.getLogger(TetrahedFactory.class);
 
-  public List<String> getParametrs(Path path) throws IOException {
+  public List<String> getParametrs(Path path) throws InvalidPathException {
     List<String> parametrs;
     try{
       parametrs = Files.readAllLines(path);
+      LOGGER.info("All parametrs read successfully");
       return parametrs;
-    } catch (FileNotFoundException e) {
-      LOGGER.error("Exception in ParametrsRead : " + e.getMessage());
-      throw new FileNotFoundException("Can`t find file in " + path);
     } catch (IOException e){
       LOGGER.error("Exception in ParametrsRead " + e.getMessage());
-      throw new IOException("IOException");
+      throw new InvalidPathException("Path" + path + "is not valid",e);
     }
   }
 }
